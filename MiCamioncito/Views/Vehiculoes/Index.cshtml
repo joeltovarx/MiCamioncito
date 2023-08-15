@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MiCamioncito.Models.Vehiculo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>VEHICULOS</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Agregar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Capacidad m³
+            </th>
+            <th>
+                Consumo Km
+            </th>
+            <th>
+                Distancia Pendiente
+            </th>
+            <th>
+               Disponibilidad
+            </th>
+            <th>
+               Tipo Carga
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsumoConbustible)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanciaPendiente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponibilidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoCarga)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
